@@ -1310,4 +1310,4 @@ Description:
 **Laravel Version**: 11.0
 **Status**: ✅ Production Ready
 **Author**: Hafiz Batubara
-**Repository**: https://github.com/username/kelola-karyawan
+**Repository**: https://github.com/Hapis01/kelola-karyawan
