@@ -1309,5 +1309,5 @@ Description:
 **Last Updated**: 30 November 2025
 **Laravel Version**: 11.0
 **Status**: ✅ Production Ready
-**Author**: Your Name / Team Name
+**Author**: Hafiz Batubara
 **Repository**: https://github.com/username/kelola-karyawan
