@@ -1243,8 +1243,8 @@ Description:
 ```
 
 ### 4. Kontak Developer
-- **Email**: developer@example.com
-- **WhatsApp**: +62 xxx xxxx xxxx
+- **Email**: hapisbatubaraa@gmail.com
+- **WhatsApp**: +62882016572736
 
 ---
 
