@@ -37,26 +37,26 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
-| KARYAWAN (protected)
+| KARYAWAN (protected - Role: Karyawan)
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'karyawan.role'])->group(function () {
     Route::get('/karyawan/dashboard', [\App\Http\Controllers\Karyawan\DashboardController::class, 'index'])
         ->name('karyawan.dashboard');
     
     Route::get('/karyawan/profile', [\App\Http\Controllers\Karyawan\DashboardController::class, 'profile'])
         ->name('karyawan.profile');
     
-    Route::get('/karyawan/{id}/id-card', [\App\Http\Controllers\Karyawan\DashboardController::class, 'generateIDCard'])
+    Route::get('/karyawan/id-card/{nik}', [\App\Http\Controllers\Karyawan\DashboardController::class, 'generateIDCard'])
         ->name('karyawan.id-card');
 });
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN (protected)
+| ADMIN (protected - Role: Admin)
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'admin.role'])->group(function () {
 
     // Dashboard
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- TITLE -->
+        <mxCell id="title" value="KELOLA KARYAWAN - USE CASE DIAGRAM" style="text;html=1;strokeColor=none;fillColor=none;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+            <mxGeometry x="100" y="10" width="900" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- SYSTEM BOUNDARY -->
+        <mxCell id="system_boundary" value="Kelola Karyawan System" style="rectangle;html=1;rounded=1;arcSize=10;dashed=1;dashPattern=1 4;strokeColor=#000000;strokeWidth=2;fillColor=none;" vertex="1" parent="1">
+            <mxGeometry x="150" y="60" width="850" height="700" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ACTORS -->
+        <!-- ============================================ -->
+        
+        <!-- Actor 1: Admin -->
+        <mxCell id="actor_admin" value="Admin (HR Manager)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+            <mxGeometry x="30" y="250" width="80" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Actor 2: Karyawan -->
+        <mxCell id="actor_karyawan" value="Karyawan (Employee)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+            <mxGeometry x="1050" y="250" width="80" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- AUTHENTICATION USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-01: Login -->
+        <mxCell id="uc_login" value="Login" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="250" y="100" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-02: Logout -->
+        <mxCell id="uc_logout" value="Logout" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="250" y="180" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ADMIN DASHBOARD & VIEW USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-03: View Dashboard -->
+        <mxCell id="uc_view_dashboard" value="View Dashboard" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="400" y="100" width="110" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-04: Filter & Sort Karyawan -->
+        <mxCell id="uc_filter_karyawan" value="Filter &amp; Sort&#xa;Karyawan" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="400" y="190" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-05: View List Karyawan -->
+        <mxCell id="uc_view_list" value="View List&#xa;Karyawan" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="550" y="190" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-06: View Detail Karyawan -->
+        <mxCell id="uc_view_detail" value="View Detail&#xa;Karyawan" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="550" y="290" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ADMIN CRUD USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-07: Tambah Karyawan -->
+        <mxCell id="uc_create_karyawan" value="Tambah&#xa;Karyawan" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="400" y="290" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-08: Edit Karyawan -->
+        <mxCell id="uc_edit_karyawan" value="Edit Karyawan" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="550" y="390" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-09: Hapus Karyawan -->
+        <mxCell id="uc_delete_karyawan" value="Hapus/Deaktifkan&#xa;Karyawan" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="400" y="390" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ADMIN USER MANAGEMENT USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-10: View List User -->
+        <mxCell id="uc_view_users" value="View List&#xa;User" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="250" y="290" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-11: Tambah User -->
+        <mxCell id="uc_create_user" value="Tambah&#xa;User" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="250" y="390" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-12: Edit User -->
+        <mxCell id="uc_edit_user" value="Edit User" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="250" y="490" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-13: Hapus User -->
+        <mxCell id="uc_delete_user" value="Hapus User" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="400" y="490" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ADMIN REPORTING & EXPORT USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-14: Generate Report -->
+        <mxCell id="uc_generate_report" value="Generate Report&#xa;/ Export PDF" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="550" y="490" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-15: Preview Report -->
+        <mxCell id="uc_preview_report" value="Preview&#xa;Report" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="490" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ADMIN HISTORY & AUDIT USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-16: View History -->
+        <mxCell id="uc_view_history" value="View Audit Trail&#xa;/ History" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="290" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ADMIN PROFILE USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-17: View Admin Profile -->
+        <mxCell id="uc_view_profile" value="View Admin&#xa;Profile" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="100" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-18: Edit Admin Profile -->
+        <mxCell id="uc_edit_profile" value="Edit Admin&#xa;Profile" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="190" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-19: Change Password -->
+        <mxCell id="uc_change_password" value="Change&#xa;Password" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="390" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- KARYAWAN USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- UC-20: View Karyawan Dashboard -->
+        <mxCell id="uc_karyawan_dashboard" value="View Dashboard" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="820" y="100" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-21: View Karyawan Profile -->
+        <mxCell id="uc_karyawan_profile" value="View Profile" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="820" y="190" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- UC-22: Generate ID Card -->
+        <mxCell id="uc_generate_idcard" value="Generate&#xa;ID Card" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+            <mxGeometry x="820" y="290" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ASSOCIATIONS - ADMIN TO USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- Admin -> Login -->
+        <mxCell id="edge_admin_login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_login">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Logout -->
+        <mxCell id="edge_admin_logout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_logout">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> View Dashboard -->
+        <mxCell id="edge_admin_dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_view_dashboard">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Filter Karyawan -->
+        <mxCell id="edge_admin_filter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_filter_karyawan">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> View List Karyawan -->
+        <mxCell id="edge_admin_view_list" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_view_list">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> View Detail Karyawan -->
+        <mxCell id="edge_admin_view_detail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_view_detail">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Tambah Karyawan -->
+        <mxCell id="edge_admin_create" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_create_karyawan">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Edit Karyawan -->
+        <mxCell id="edge_admin_edit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_edit_karyawan">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Delete Karyawan -->
+        <mxCell id="edge_admin_delete" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_delete_karyawan">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> View Users -->
+        <mxCell id="edge_admin_view_users" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_view_users">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Create User -->
+        <mxCell id="edge_admin_create_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_create_user">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Edit User -->
+        <mxCell id="edge_admin_edit_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_edit_user">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Delete User -->
+        <mxCell id="edge_admin_delete_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_delete_user">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Generate Report -->
+        <mxCell id="edge_admin_generate_report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_generate_report">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Preview Report -->
+        <mxCell id="edge_admin_preview_report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_preview_report">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> View History -->
+        <mxCell id="edge_admin_view_history" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_view_history">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> View Profile -->
+        <mxCell id="edge_admin_view_profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_view_profile">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Edit Profile -->
+        <mxCell id="edge_admin_edit_profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_edit_profile">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admin -> Change Password -->
+        <mxCell id="edge_admin_change_password" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_admin" target="uc_change_password">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ASSOCIATIONS - KARYAWAN TO USE CASES -->
+        <!-- ============================================ -->
+        
+        <!-- Karyawan -> Login -->
+        <mxCell id="edge_karyawan_login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_karyawan" target="uc_login">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Karyawan -> Logout -->
+        <mxCell id="edge_karyawan_logout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_karyawan" target="uc_logout">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Karyawan -> View Karyawan Dashboard -->
+        <mxCell id="edge_karyawan_dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_karyawan" target="uc_karyawan_dashboard">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Karyawan -> View Karyawan Profile -->
+        <mxCell id="edge_karyawan_profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_karyawan" target="uc_karyawan_profile">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Karyawan -> Generate ID Card -->
+        <mxCell id="edge_karyawan_idcard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="actor_karyawan" target="uc_generate_idcard">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- INCLUDE RELATIONSHIPS (Dependencies) -->
+        <!-- ============================================ -->
+        
+        <!-- Filter -> View List (include) -->
+        <mxCell id="include_filter_to_list" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=1 4;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="uc_filter_karyawan" target="uc_view_list">
+            <mxGeometry relative="1" as="geometry">
+                <mxPoint x="470" y="230" as="sourcePoint"/>
+                <mxPoint x="580" y="230" as="targetPoint"/>
+            </mxGeometry>
+        </mxCell>
+        
+        <!-- Dashboard -> View List (include) -->
+        <mxCell id="include_dashboard_to_list" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=1 4;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="uc_view_dashboard" target="uc_view_list">
+            <mxGeometry relative="1" as="geometry">
+                <mxPoint x="510" y="140" as="sourcePoint"/>
+                <mxPoint x="600" y="200" as="targetPoint"/>
+            </mxGeometry>
+        </mxCell>
+        
+        <!-- View Detail -> View List (include) -->
+        <mxCell id="include_detail_to_list" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=1 4;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="uc_view_detail" target="uc_view_list">
+            <mxGeometry relative="1" as="geometry">
+                <mxPoint x="605" y="290" as="sourcePoint"/>
+                <mxPoint x="605" y="260" as="targetPoint"/>
+            </mxGeometry>
+        </mxCell>
+        
+        <!-- Edit -> View Detail (extend) -->
+        <mxCell id="extend_edit_to_detail" value="&lt;&lt;extend&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=1 4;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="uc_edit_karyawan" target="uc_view_detail">
+            <mxGeometry relative="1" as="geometry">
+                <mxPoint x="605" y="360" as="sourcePoint"/>
+                <mxPoint x="605" y="360" as="targetPoint"/>
+            </mxGeometry>
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- LEGEND / NOTES -->
+        <!-- ============================================ -->
+        
+        <mxCell id="legend_title" value="LEGEND:" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;align=left;" vertex="1" parent="1">
+            <mxGeometry x="150" y="780" width="100" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="legend_solid_line" value="─── : Association (aktor menggunakan use case)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" vertex="1" parent="1">
+            <mxGeometry x="250" y="780" width="300" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="legend_dashed_line" value="╌╌╌╌ : Include/Extend (use case dependency)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" vertex="1" parent="1">
+            <mxGeometry x="550" y="780" width="300" height="20" as="geometry"/>
+        </mxCell>
+        
+    </root>
+</mxGraphModel>

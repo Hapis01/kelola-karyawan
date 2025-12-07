@@ -13,6 +13,12 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         
+        // Cek role - hanya karyawan yang bisa akses
+        if ($user->role !== 'karyawan') {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'Anda tidak memiliki akses ke halaman karyawan.');
+        }
+        
         // Jika user tidak punya relasi karyawan, redirect ke login
         if (!$user->karyawan) {
             Auth::logout();
@@ -36,6 +42,13 @@ class DashboardController extends Controller
     public function profile()
     {
         $user = Auth::user();
+        
+        // Cek role
+        if ($user->role !== 'karyawan') {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'Anda tidak memiliki akses ke halaman karyawan.');
+        }
+        
         $karyawan = $user->karyawan;
 
         return view('karyawan.profile', [
@@ -43,16 +56,21 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function generateIDCard($id)
+    public function generateIDCard($nik)
     {
         $user = Auth::user();
         
-        // Cek apakah user ini adalah pemilik karyawan tersebut
-        if ($user->karyawan_id != $id && !$user->isAdmin()) {
+        // Cek role
+        if ($user->role !== 'karyawan') {
+            abort(403, 'Unauthorized');
+        }
+        
+        // Cek apakah user ini adalah pemilik karyawan tersebut (berdasarkan NIK)
+        if ($user->nik !== $nik) {
             abort(403, 'Unauthorized');
         }
 
-        $karyawan = Karyawan::with('divisi')->findOrFail($id);
+        $karyawan = \App\Models\Karyawan::where('nik', $nik)->with('divisi')->firstOrFail();
 
         // Generate PDF ID Card
         $pdf = \PDF::loadView('karyawan.id-card', [

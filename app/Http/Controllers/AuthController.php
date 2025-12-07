@@ -41,13 +41,19 @@ class AuthController extends Controller
             
             $user = Auth::user();
             
-            // Jika user adalah admin (tidak punya relasi karyawan), arahkan ke admin dashboard
-            if (!$user->karyawan_id) {
+            // Redirect berdasarkan role
+            if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard');
             }
             
-            // Jika user punya relasi karyawan, arahkan ke karyawan dashboard
-            return redirect()->route('karyawan.dashboard');
+            // Jika role karyawan, arahkan ke karyawan dashboard
+            if ($user->role === 'karyawan') {
+                return redirect()->route('karyawan.dashboard');
+            }
+            
+            // Default ke login jika role tidak dikenal
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'Role tidak dikenal. Hubungi administrator.');
         }
 
         return back()->with('error', 'Password yang Anda masukkan salah. Silahkan coba lagi.')->withInput($request->only('email'));

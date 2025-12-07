@@ -17,6 +17,10 @@ class Karyawan extends Model
         'nik',
         'foto',
         'alamat',
+        'no_telepon',
+        'tanggal_lahir',
+        'tempat_lahir',
+        'pendidikan',
         'jenis_kelamin',
         'divisi_id',
         'posisi',
@@ -33,10 +37,10 @@ class Karyawan extends Model
     }
 
     /**
-     * Relasi ke User
+     * Relasi ke User berdasarkan NIK
      */
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'nik', 'nik');
     }
 }

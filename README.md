@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Kelola Karyawan - Employee Management System
 
 <p align="center">
@@ -1242,7 +1243,7 @@ Description:
 - Error message/screenshot
 ```
 
-### 4. Kontak Developer
+### 4. Kontak Deve
 - **Email**: developer@example.com
 - **WhatsApp**: +62 xxx xxxx xxxx
 
@@ -1311,3 +1312,6 @@ Description:
 **Status**: ✅ Production Ready
 **Author**: Your Name / Team Name
 **Repository**: https://github.com/username/kelola-karyawan
+=======
+# kelola-karyawan
+>>>>>>> b2ad017633037ecfe44db5009d67f55c519ba283
