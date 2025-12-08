@@ -24,7 +24,7 @@
                 <p class="text-muted">{{ $karyawan->nik }}</p>
                 <p class="text-muted mb-4">{{ $karyawan->posisi }}</p>
 
-                <a href="{{ route('karyawan.id-card', $karyawan->nik) }}" target="_blank" class="btn btn-primary w-100">
+                <a href="{{ route('karyawan.id-card', ['id' => $karyawan->id]) }}" target="_blank" class="btn btn-primary w-100">
                     <i class="fas fa-download me-2"></i>Cetak Kartu
                 </a>
             </div>

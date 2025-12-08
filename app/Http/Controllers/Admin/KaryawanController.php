@@ -13,20 +13,9 @@ class KaryawanController extends Controller
 {
     public function store(Request $request)
     {
-        // Validasi input terlebih dahulu untuk NIK
         $data = $request->validate([
             'nama' => 'required|string|max:255',
-            'nik' => [
-                'required',
-                'string',
-                'max:100',
-                function ($attribute, $value, $fail) {
-                    $exists = Karyawan::where('nik', $value)->exists();
-                    if ($exists) {
-                        $fail('NIK <strong>' . htmlspecialchars($value) . '</strong> sudah terdaftar di sistem. Gunakan NIK yang berbeda atau hubungi admin jika ada kekeliruan.');
-                    }
-                },
-            ],
+            'nik' => 'required|string|max:100|unique:karyawans,nik',
             'alamat' => 'nullable|string',
             'no_telepon' => 'nullable|string|max:20',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
@@ -39,24 +28,6 @@ class KaryawanController extends Controller
             'status' => 'required|in:Aktif,Tidak Aktif',
             'keterangan' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120'
-        ], [
-            'nik.required' => 'NIK tidak boleh kosong',
-            'nik.max' => 'NIK maksimal 100 karakter',
-            'nama.required' => 'Nama tidak boleh kosong',
-            'nama.max' => 'Nama maksimal 255 karakter',
-            'jenis_kelamin.required' => 'Jenis kelamin harus dipilih',
-            'jenis_kelamin.in' => 'Jenis kelamin hanya boleh Laki-laki atau Perempuan',
-            'divisi_id.required' => 'Divisi harus dipilih',
-            'divisi_id.exists' => 'Divisi yang dipilih tidak ditemukan',
-            'posisi.required' => 'Posisi tidak boleh kosong',
-            'status.required' => 'Status harus dipilih',
-            'status.in' => 'Status hanya boleh Aktif atau Tidak Aktif',
-            'tanggal_lahir.date' => 'Format tanggal lahir tidak valid',
-            'gaji.numeric' => 'Gaji harus berupa angka',
-            'gaji.min' => 'Gaji tidak boleh kurang dari 0',
-            'foto.image' => 'File yang diupload harus berupa gambar',
-            'foto.mimes' => 'Format foto hanya boleh JPG, PNG, atau GIF',
-            'foto.max' => 'Ukuran foto maksimal 5MB'
         ]);
 
         // Handle file upload
@@ -79,7 +50,7 @@ class KaryawanController extends Controller
             'created_at' => now(),
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Karyawan <strong>' . htmlspecialchars($data['nama']) . '</strong> berhasil ditambahkan.');
+        return redirect()->route('admin.dashboard')->with('success', 'Karyawan berhasil ditambahkan.');
     }
 
     public function destroy($id)

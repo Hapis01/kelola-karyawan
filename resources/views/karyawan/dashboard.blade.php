@@ -31,7 +31,7 @@
     <div class="col-md-3 col-sm-6 col-12">
         <div class="dashboard-card">
             <div class="fw-bold text-muted small">Gaji Pokok</div>
-            <h2 class="fw-bold text-success mt-2">Rp {{ number_format($karyawan->gaji ?? 0, 0, ',', '.') }}</h2>
+            <h4 class="fw-bold text-success mt-2">Rp {{ number_format($karyawan->gaji ?? 0, 0, ',', '.') }}</h4>
         </div>
     </div>
 </div>
@@ -41,7 +41,7 @@
     <a href="{{ route('karyawan.profile') }}" class="btn btn-primary flex-fill flex-md-grow-0">
         <i class="fas fa-user me-2"></i>Lihat Profil
     </a>
-    <a href="{{ route('karyawan.id-card', $karyawan->nik) }}" target="_blank" class="btn btn-outline-primary flex-fill flex-md-grow-0">
+    <a href="{{ route('karyawan.id-card', ['id' => $karyawan->id]) }}" target="_blank" class="btn btn-outline-primary flex-fill flex-md-grow-0">
         <i class="fas fa-download me-2"></i>Unduh Kartu
     </a>
 </div>
@@ -138,6 +138,49 @@
     </div>
 </div>
 
+<!-- History Section -->
+@if(count($histories) > 0)
+<div class="table-container">
+    <h5 class="fw-bold mb-3"><i class="fas fa-history text-warning me-2"></i>Riwayat Perubahan</h5>
+    
+    <div class="table-responsive">
+        <table class="table table-hover table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Aksi</th>
+                    <th class="d-none d-md-table-cell">Deskripsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($histories as $history)
+                <tr>
+                    <td class="small">{{ $history->created_at->format('d M Y') }}</td>
+                    <td>
+                        @if($history->action === 'create')
+                            <span class="badge bg-success"><i class="fas fa-plus me-1"></i>Tambah</span>
+                        @elseif($history->action === 'update')
+                            <span class="badge bg-warning text-dark"><i class="fas fa-edit me-1"></i>Update</span>
+                        @else
+                            <span class="badge bg-danger"><i class="fas fa-trash me-1"></i>Hapus</span>
+                        @endif
+                    </td>
+                    <td class="d-none d-md-table-cell small">
+                        @if($history->action === 'create')
+                            Data ditambahkan
+                        @elseif($history->action === 'update')
+                            Data diperbarui
+                        @else
+                            Data dihapus
+                        @endif
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+@endif
 
 @endsection
 

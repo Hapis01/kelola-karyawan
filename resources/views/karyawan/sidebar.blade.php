@@ -12,7 +12,7 @@
        style="{{ request()->routeIs('karyawan.profile') ? 'background: #2b39a0;' : '' }}">
         <i class="fas fa-user me-2"></i>Profil Saya
     </a>
-    <a href="{{ route('karyawan.id-card', Auth::user()->nik) }}" target="_blank"
+    <a href="{{ route('karyawan.id-card', ['id' => Auth::user()->karyawan_id]) }}" target="_blank"
        class="{{ request()->routeIs('karyawan.id-card') ? 'active' : '' }}"
        style="{{ request()->routeIs('karyawan.id-card') ? 'background: #2b39a0;' : '' }}">
         <i class="fas fa-download me-2"></i>Cetak Kartu Karyawan

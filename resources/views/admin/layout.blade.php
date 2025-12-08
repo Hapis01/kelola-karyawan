@@ -35,7 +35,6 @@
             overflow-y: auto;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000;
-            transform: translateX(0);
         }
 
         .sidebar.hidden {
@@ -153,24 +152,17 @@
 
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
-            /* Mobile - sidebar hidden by default */
+            .sidebar-toggle {
+                display: block;
+            }
+
             .sidebar {
                 width: 100%;
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-                transform: translateX(-100%);
             }
 
             .sidebar.hidden {
                 transform: translateX(-100%);
-            }
-
-            /* Sidebar visible when not hidden */
-            .sidebar:not(.hidden) {
-                transform: translateX(0);
-            }
-
-            .sidebar-toggle {
-                display: block;
             }
 
             .sidebar-overlay.show {
@@ -229,26 +221,6 @@
             .form-control,
             .form-select {
                 font-size: 0.9rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            /* Desktop - sidebar always visible */
-            .sidebar {
-                transform: translateX(0) !important;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            }
-
-            .sidebar.hidden {
-                transform: translateX(0) !important;
-            }
-
-            .sidebar-toggle {
-                display: none !important;
-            }
-
-            .sidebar-overlay {
-                display: none !important;
             }
         }
 
@@ -325,40 +297,20 @@
             sidebarOverlay.classList.remove('show');
         }
 
-        function openSidebar() {
-            sidebar.classList.remove('hidden');
-            sidebarOverlay.classList.remove('show');
-        }
-
         sidebarToggle.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
 
-        // Close sidebar when a link is clicked (mobile only)
+        // Close sidebar when a link is clicked
         const sidebarLinks = document.querySelectorAll('.sidebar a');
         sidebarLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    closeSidebar();
-                }
-            });
+            link.addEventListener('click', closeSidebar);
         });
 
-        // Handle window resize - close on mobile, open on desktop
-        function handleResize() {
+        // Close sidebar on window resize (when back to desktop)
+        window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                // Desktop mode - sidebar should always be visible
-                openSidebar();
-            } else {
-                // Mobile mode - sidebar should be hidden by default
                 closeSidebar();
             }
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        // Initialize sidebar state on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            handleResize();
         });
 
         // Add Karyawan modal helpers (reset, focus, auto-open on validation error)

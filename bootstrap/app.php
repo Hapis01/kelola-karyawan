@@ -11,11 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Register route middleware aliases
-        $middleware->alias([
-            'admin.role' => \App\Http\Middleware\AdminRole::class,
-            'karyawan.role' => \App\Http\Middleware\KaryawanRole::class,
-        ]);
+        //
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -11,13 +11,12 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'nik',
+        'karyawan_id',
         'name',
         'email',
         'password',
         'phone',
         'address',
-        'role',
     ];
 
     protected $hidden = [
@@ -26,11 +25,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * Relasi ke Karyawan berdasarkan NIK
+     * Relasi ke Karyawan
      */
     public function karyawan()
     {
-        return $this->belongsTo(Karyawan::class, 'nik', 'nik');
+        return $this->belongsTo(Karyawan::class);
     }
 
     /**
@@ -38,14 +37,6 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return $this->role === 'admin';
-    }
-
-    /**
-     * Check apakah user adalah karyawan
-     */
-    public function isKaryawan()
-    {
-        return $this->role === 'karyawan';
+        return is_null($this->karyawan_id);
     }
 }

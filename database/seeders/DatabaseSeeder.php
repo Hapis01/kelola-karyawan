@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         // 3. Admin user dibuat di akhir
         
         $this->call(DivisiSeeder::class);
-        $this->call(KaryawanSeeder::class); // Seeder ini sudah termasuk pembuatan Users dan Admin
+        $this->call(KaryawanSeeder::class);
+        $this->call(UserSeeder::class);
+         // Seeder ini sudah termasuk pembuatan Users dan Admin
     }
 }
 

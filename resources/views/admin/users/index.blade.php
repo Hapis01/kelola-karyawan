@@ -46,11 +46,9 @@
             <thead class="table-light">
                 <tr>
                     <th style="width: 5%;">No</th>
-                    <th style="width: 20%;">Nama</th>
-                    <th style="width: 25%;">Email</th>
-                    <th style="width: 15%;">Role</th>
-                    <th style="width: 15%;">NIK / Karyawan</th>
-                    <th style="width: 15%;">Terdaftar</th>
+                    <th style="width: 25%;">Nama</th>
+                    <th style="width: 35%;">Email</th>
+                    <th style="width: 20%;">Terdaftar</th>
                     <th style="width: 15%;" class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -68,51 +66,27 @@
                     </td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        @if($user->role === 'admin')
-                            <span class="badge bg-danger">Admin</span>
-                        @else
-                            <span class="badge bg-info">Karyawan</span>
-                        @endif
-                    </td>
-                    <td>
-                        @if($user->nik)
-                            <small class="text-muted">{{ $user->nik }}</small>
-                            @if($user->karyawan)
-                                <br>
-                                <small class="fw-500">{{ $user->karyawan->nama }}</small>
-                            @endif
-                        @else
-                            <small class="text-muted">-</small>
-                        @endif
-                    </td>
-                    <td>
                         <small class="text-muted">
                             {{ $user->created_at->format('d/m/Y H:i') }}
                         </small>
                     </td>
                     <td class="text-center">
                         <button class="btn btn-sm btn-warning me-1" data-bs-toggle="modal" data-bs-target="#editUserModal" 
-                                onclick="editUser({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}', '{{ $user->role }}', '{{ $user->nik }}')">
+                                onclick="editUser({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}')">
                             <i class="fas fa-edit"></i> Edit
                         </button>
-                        @if($user->id !== auth()->id() && !($user->role === 'admin' && auth()->user()->role === 'admin'))
-                            <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus user ini?')">
-                                    <i class="fas fa-trash"></i> Hapus
-                                </button>
-                            </form>
-                        @else
-                            <button class="btn btn-sm btn-danger" disabled title="{{ $user->id === auth()->id() ? 'Anda tidak bisa menghapus akun sendiri' : 'Anda tidak bisa menghapus akun admin lain' }}">
+                        <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus user ini?')">
                                 <i class="fas fa-trash"></i> Hapus
                             </button>
-                        @endif
+                        </form>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7" class="text-center py-4 text-muted">
+                    <td colspan="5" class="text-center py-4 text-muted">
                         <i class="fas fa-inbox me-2"></i> Tidak ada data user
                     </td>
                 </tr>
@@ -146,61 +120,26 @@
                     
                     <div class="mb-3">
                         <label class="form-label fw-600">Nama <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama lengkap" value="{{ old('name') }}" required>
-                        @error('name')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <input type="text" class="form-control" name="name" placeholder="Nama lengkap" required>
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-600">Email <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email aktif" value="{{ old('email') }}" required>
-                        @error('email')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-600">Role <span class="text-danger">*</span></label>
-                        <select class="form-select @error('role') is-invalid @enderror" name="role" id="addRoleSelect" required onchange="handleRoleChange('add')">
-                            <option value="">-- Pilih Role --</option>
-                            <option value="admin" {{ old('role') === 'admin' ? 'selected' : '' }}>Admin</option>
-                            <option value="karyawan" {{ old('role') === 'karyawan' ? 'selected' : '' }}>Karyawan</option>
-                        </select>
-                        @error('role')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3" id="nikFieldAdd" style="display: none;">
-                        <label class="form-label fw-600">NIK Karyawan <span class="text-danger">*</span></label>
-                        <select class="form-select @error('nik') is-invalid @enderror" name="nik" id="nikSelect">
-                            <option value="">-- Pilih Karyawan --</option>
-                            @foreach($karyawans as $k)
-                                <option value="{{ $k->nik }}" {{ old('nik') === $k->nik ? 'selected' : '' }}>
-                                    {{ $k->nik }} - {{ $k->nama }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('nik')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <input type="email" class="form-control" name="email" placeholder="Email aktif" required>
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-600">Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Minimal 8 karakter" required>
-                        @error('password')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <input type="password" class="form-control" name="password" placeholder="Minimal 8 karakter" required>
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-600">Konfirmasi Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="Ulangi password" required>
-                        @error('password_confirmation')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <input type="password" class="form-control" name="password_confirmation" placeholder="Ulangi password" required>
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 fw-bold">
@@ -227,62 +166,27 @@
                     
                     <div class="mb-3">
                         <label class="form-label fw-600">Nama <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama lengkap" required>
-                        @error('name')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <input type="text" class="form-control" name="name" placeholder="Nama lengkap" required>
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-600">Email <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email aktif" required>
-                        @error('email')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-600">Role <span class="text-danger">*</span></label>
-                        <select class="form-select @error('role') is-invalid @enderror" name="role" id="editRoleSelect" required onchange="handleRoleChange('edit')">
-                            <option value="">-- Pilih Role --</option>
-                            <option value="admin">Admin</option>
-                            <option value="karyawan">Karyawan</option>
-                        </select>
-                        @error('role')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3" id="nikFieldEdit" style="display: none;">
-                        <label class="form-label fw-600">NIK Karyawan <span class="text-danger">*</span></label>
-                        <select class="form-select @error('nik') is-invalid @enderror" name="nik" id="nikSelectEdit">
-                            <option value="">-- Pilih Karyawan --</option>
-                            @foreach($karyawans as $k)
-                                <option value="{{ $k->nik }}">
-                                    {{ $k->nik }} - {{ $k->nama }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('nik')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <input type="email" class="form-control" name="email" placeholder="Email aktif" required>
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-600">Password Baru (Opsional)</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Kosongkan jika tidak ingin mengubah">
+                        <input type="password" class="form-control" name="password" placeholder="Kosongkan jika tidak ingin mengubah">
                         <small class="text-muted">Minimal 8 karakter jika ingin mengubah</small>
-                        @error('password')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <div class="mb-3" id="passwordConfirmDiv" style="display:none;">
                         <label class="form-label fw-600">Konfirmasi Password</label>
-                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="Ulangi password">
-                        @error('password_confirmation')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
+                        <input type="password" class="form-control" name="password_confirmation" placeholder="Ulangi password">
+                        <small class="text-danger d-none error-message"></small>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 fw-bold">
@@ -428,41 +332,14 @@
 </style>
 
 <script>
-    function editUser(id, name, email, role, nik) {
+    function editUser(id, name, email) {
         const form = document.getElementById('editUserForm');
         form.action = `/admin/users/${id}/update`;
         form.querySelector('input[name="name"]').value = name;
         form.querySelector('input[name="email"]').value = email;
-        form.querySelector('select[name="role"]').value = role;
         form.querySelector('input[name="password"]').value = '';
         form.querySelector('input[name="password_confirmation"]').value = '';
-        
-        // Handle NIK field visibility
-        const nikField = document.getElementById('nikFieldEdit');
-        const nikSelect = document.getElementById('nikSelectEdit');
-        if (role === 'karyawan') {
-            nikField.style.display = 'block';
-            nikSelect.value = nik || '';
-        } else {
-            nikField.style.display = 'none';
-            nikSelect.value = '';
-        }
-        
         document.getElementById('passwordConfirmDiv').style.display = 'none';
-    }
-
-    function handleRoleChange(modalType) {
-        const roleSelect = document.getElementById(modalType === 'add' ? 'addRoleSelect' : 'editRoleSelect');
-        const nikField = document.getElementById(modalType === 'add' ? 'nikFieldAdd' : 'nikFieldEdit');
-        
-        if (roleSelect.value === 'karyawan') {
-            nikField.style.display = 'block';
-            nikField.querySelector('select').required = true;
-        } else {
-            nikField.style.display = 'none';
-            nikField.querySelector('select').required = false;
-            nikField.querySelector('select').value = '';
-        }
     }
 
     // Show password confirmation field when password is entered
@@ -480,14 +357,6 @@
     // Reset form when modal is hidden
     document.getElementById('addUserModal').addEventListener('hidden.bs.modal', function() {
         document.getElementById('addUserForm').reset();
-        document.getElementById('nikFieldAdd').style.display = 'none';
-    });
-
-    // Reset edit form
-    document.getElementById('editUserModal').addEventListener('hidden.bs.modal', function() {
-        document.getElementById('editUserForm').reset();
-        document.getElementById('nikFieldEdit').style.display = 'none';
-        document.getElementById('passwordConfirmDiv').style.display = 'none';
     });
 </script>
 
