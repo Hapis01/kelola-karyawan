@@ -49,7 +49,7 @@
 <!-- Info Karyawan Card -->
 <div class="table-container">
     <h5 class="fw-bold mb-3"><i class="fas fa-briefcase text-primary me-2"></i>Informasi Pekerjaan</h5>
-    
+
     <div class="table-responsive">
         <table class="table table-sm table-borderless">
             <tbody>
@@ -97,7 +97,7 @@
 <!-- Info Pribadi Card -->
 <div class="table-container">
     <h5 class="fw-bold mb-3"><i class="fas fa-id-card text-info me-2"></i>Informasi Pribadi</h5>
-    
+
     <div class="table-responsive">
         <table class="table table-sm table-borderless">
             <tbody>
@@ -196,6 +196,7 @@
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
     }
+
 
     /* Responsive adjustments */
     @media (max-width: 768px) {

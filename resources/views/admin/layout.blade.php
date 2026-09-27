@@ -32,10 +32,52 @@
             top: 0;
             padding-top: 20px;
             color: white;
-            overflow-y: auto;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000;
             transform: translateX(0);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar img {
+            width: 190px;
+            display: block;
+            margin: 0 auto 25px auto;
+            flex-shrink: 0;
+            object-fit: contain;
+            max-height: 80px;
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 5px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sidebar-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-menu::-webkit-scrollbar-track {
+            background: #10185f;
+        }
+
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background: #2b39a0;
+            border-radius: 3px;
+        }
+
+        .sidebar-menu::-webkit-scrollbar-thumb:hover {
+            background: #3d4db8;
+        }
+
+        .sidebar-footer {
+            flex-shrink: 0;
+            padding: 15px 0;
+            border-top: 1px solid #2b39a0;
+            background: linear-gradient(to bottom, transparent, rgba(43, 57, 160, 0.1));
         }
 
         .sidebar.hidden {
@@ -57,6 +99,8 @@
             text-decoration: none;
             margin-bottom: 5px;
             transition: all 0.3s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .sidebar a:hover {
@@ -69,7 +113,12 @@
 
         .logout-btn {
             background: #e33b3b !important;
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 0 !important;
+        }
+
+        .sidebar-footer .logout-btn {
+            margin-top: 0;
         }
 
         /* Sidebar Toggle Button */
@@ -127,6 +176,74 @@
             box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
         }
 
+        /* Statistic Card Styles */
+        .stat-card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .stat-card-icon {
+            font-size: 2.5rem;
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .stat-card-warning .stat-card-icon {
+            background: rgba(255, 193, 7, 0.15);
+            color: #ffc107;
+        }
+
+        .stat-card-success .stat-card-icon {
+            background: rgba(40, 167, 69, 0.15);
+            color: #28a745;
+        }
+
+        .stat-card-danger .stat-card-icon {
+            background: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+
+        .stat-card-primary .stat-card-icon {
+            background: rgba(0, 123, 255, 0.15);
+            color: #007bff;
+        }
+
+        .stat-card-body {
+            flex: 1;
+        }
+
+        .stat-card-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #212529;
+            line-height: 1;
+        }
+
         .table-container {
             background: white;
             padding: 20px;
@@ -134,6 +251,18 @@
             margin-top: 20px;
             box-shadow: 0px 3px 10px rgba(0,0,0,0.15);
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+            z-index: 10;
         }
 
         .search-input {
@@ -151,13 +280,54 @@
             }
         }
 
+        /* Modal Responsiveness */
+        .modal-body {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #dee2e6;
+            padding: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* Page Header Responsiveness */
+        .page-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .page-header h3 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .page-header .btn {
+            white-space: nowrap;
+        }
+
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             /* Mobile - sidebar hidden by default */
             .sidebar {
-                width: 100%;
+                width: 280px;
+                max-width: 85vw;
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
                 transform: translateX(-100%);
+                padding-bottom: 20px;
+            }
+
+            .sidebar-menu {
+                max-height: calc(100vh - 250px);
             }
 
             .sidebar.hidden {
@@ -185,6 +355,56 @@
 
             .content h3 {
                 font-size: 1.5rem;
+            }
+
+            .page-header {
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .page-header h3 {
+                flex: 1 1 100%;
+                font-size: 1.3rem;
+            }
+
+            .page-header .btn {
+                flex-shrink: 0;
+            }
+
+            .page-header .btn-sm {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .stat-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .stat-card-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                margin: 0 auto;
+            }
+
+            .stat-card-value {
+                font-size: 1.5rem;
+            }
+
+            .sidebar-menu {
+                max-height: calc(100vh - 280px);
+            }
+
+            .sidebar-footer {
+                padding: 12px 0;
+                margin-top: auto;
+            }
+
+            .sidebar-footer a {
+                padding: 10px 20px;
+                font-size: 14px;
             }
 
             .dashboard-card {
@@ -215,11 +435,15 @@
                 width: 100%;
                 margin-bottom: 10px;
                 font-size: 0.9rem;
-                padding: 8px 12px;
+                padding: 12px 16px;
+                min-height: 44px;
+                touch-action: manipulation;
             }
 
             .btn-sm {
                 width: auto;
+                padding: 8px 12px;
+                min-height: 40px;
             }
 
             .search-input {
@@ -229,6 +453,59 @@
             .form-control,
             .form-select {
                 font-size: 0.9rem;
+                min-height: 40px;
+                padding: 10px 12px;
+            }
+
+            .form-label {
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
+
+            label {
+                font-size: 0.95rem;
+            }
+
+            input[type="checkbox"],
+            input[type="radio"] {
+                width: 18px;
+                height: 18px;
+                margin-top: 4px;
+            }
+
+            .modal {
+                padding-right: 0 !important;
+            }
+
+            .modal-dialog {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+            }
+
+            .modal-content {
+                border-radius: 8px;
+            }
+
+            .modal-header {
+                padding: 0.75rem;
+            }
+
+            .modal-title {
+                font-size: 1rem;
+            }
+
+            .modal-body {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-footer {
+                padding: 0.75rem;
+            }
+
+            .modal-footer .btn {
+                padding: 8px 12px;
+                margin-bottom: 5px;
             }
         }
 
@@ -249,6 +526,40 @@
 
             .sidebar-overlay {
                 display: none !important;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 768px) {
+            /* Tablet - improved spacing */
+            .content {
+                padding: 20px;
+                padding-top: 75px;
+            }
+
+            .sidebar {
+                width: 260px;
+            }
+
+            .dashboard-card {
+                padding: 15px;
+            }
+
+            .table-container {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+
+            .table {
+                font-size: 0.85rem;
+            }
+
+            .btn {
+                padding: 10px 14px;
+                font-size: 0.9rem;
+            }
+
+            h3 {
+                font-size: 1.8rem;
             }
         }
 
@@ -287,6 +598,109 @@
 
             .search-input {
                 font-size: 0.85rem !important;
+            }
+        }
+
+        /* Notification Toast Styles */
+        .notification-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10185f 0%, #2b39a0 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 2000;
+            animation: slideInRight 0.4s ease;
+            min-width: 300px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .notification-toast:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .notification-toast.show {
+            display: flex;
+            align-items: center;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .notification-toast.hide {
+            animation: slideOutRight 0.4s ease;
+        }
+
+        /* Sidebar section headers */
+        .sidebar h6 {
+            color: #99a3b3;
+            font-size: 0.75rem;
+            padding: 12px 25px 8px;
+            margin: 15px 0 0 0;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .sidebar h6:first-of-type {
+            margin-top: 0;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar a .badge {
+            margin-left: auto;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .notification-toast {
+                bottom: 15px;
+                right: 15px;
+                min-width: 280px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -476,6 +890,67 @@
                 @endif
             }
         })();
+
+        // Notification System
+        class NotificationManager {
+            constructor() {
+                this.toast = document.getElementById('notificationToast');
+                this.toastMessage = document.getElementById('toastMessage');
+                this.badge = document.getElementById('notification-badge');
+                this.hideTimeout = null;
+            }
+
+            show(message, duration = 4000) {
+                if (this.hideTimeout) clearTimeout(this.hideTimeout);
+
+                this.toastMessage.textContent = message;
+                this.toast.classList.remove('hide');
+                this.toast.classList.add('show');
+
+                this.hideTimeout = setTimeout(() => {
+                    this.toast.classList.add('hide');
+                    setTimeout(() => {
+                        this.toast.classList.remove('show', 'hide');
+                    }, 400);
+                }, duration);
+            }
+
+            updateBadge(count) {
+                if (count > 0) {
+                    this.badge.textContent = count;
+                    this.badge.style.display = 'inline-block';
+                } else {
+                    this.badge.style.display = 'none';
+                }
+            }
+        }
+
+        const notificationManager = new NotificationManager();
+
+        // Load unread notifications count
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('{{ route("admin.notifications.index") }}?unread=true', {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(r => r.text())
+            .then(html => {
+                // Parse unread count from HTML
+                const match = html.match(/unread["\']?\s*:\s*(\d+)|<span[^>]*id=["\']unread-count["\'][^>]*>(\d+)</i);
+                const count = match ? parseInt(match[1] || match[2]) : 0;
+                notificationManager.updateBadge(count);
+            })
+            .catch(() => {
+                // Silently fail
+            });
+        });
+
+        // Optional: Listen for notification events (if implementing WebSocket/Pusher)
+        // This function can be called from your notification service
+        window.showNotification = function(message, type = 'info') {
+            notificationManager.show(message, 5000);
+        };
     </script>
 
     @stack('scripts')

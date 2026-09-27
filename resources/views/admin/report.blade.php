@@ -10,7 +10,7 @@
     <div class="card-body">
         <form id="reportForm" action="{{ route('admin.report.generate') }}" method="POST">
             @csrf
-            
+
             <!-- Type Report Selection -->
             <div class="row mb-3">
                 <div class="col-md-12">
@@ -39,21 +39,22 @@
                                 @foreach($karyawans as $k)
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-check p-3 border rounded-2 hover-card">
-                                        <input class="form-check-input karyawan-checkbox" 
-                                               type="checkbox" 
-                                               name="karyawan_ids[]" 
-                                               value="{{ $k->id }}" 
+                                        <input class="form-check-input karyawan-checkbox"
+                                               type="checkbox"
+                                               name="karyawan_ids[]"
+                                               value="{{ $k->id }}"
                                                id="karyawan{{ $k->id }}">
                                         <label class="form-check-label w-100 cursor-pointer" for="karyawan{{ $k->id }}">
                                             <div class="d-flex align-items-center gap-2">
                                                 @if($k->foto)
-                                                    <img src="{{ asset('storage/karyawan/' . $k->foto) }}" 
-                                                         alt="{{ $k->nama }}" 
-                                                         class="rounded-circle" 
-                                                         width="35" height="35" 
-                                                         style="object-fit: cover;">
+                                                    <img src="{{ asset('storage/karyawan/' . $k->foto) }}"
+                                                         alt="{{ $k->nama }}"
+                                                         class="rounded-circle"
+                                                         width="35" height="35"
+                                                         style="object-fit: cover;"
+                                                         onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($k->nama) }}&background=007bff&color=ffffff&size=100';">
                                                 @else
-                                                    <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                                    <div class="rounded-circle d-flex align-items-center justify-content-center"
                                                          style="width: 35px; height: 35px; background-color: #007bff; color: white; font-weight: bold;">
                                                         {{ substr($k->nama, 0, 1) }}
                                                     </div>

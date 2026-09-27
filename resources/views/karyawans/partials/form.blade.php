@@ -22,8 +22,8 @@
     </div>
     @if(isset($data) && $data->foto)
         <div class="mt-2">
-            <small class="text-muted">Foto saat ini:</small><br>
-            <img src="{{ asset('storage/karyawan/' . $data->foto) }}" alt="Foto" style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+            <img src="{{ asset('storage/karyawan/' . $data->foto) }}" alt="Foto" style="max-width: 100px; max-height: 100px; margin-top: 5px;"
+                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($data->nama ?? 'User') }}&background=007bff&color=ffffff&size=100';">
         </div>
     @endif
 </div>
@@ -62,7 +62,25 @@
 
 <div class="mb-3">
     <label>Pendidikan Terakhir</label>
-    <input type="text" name="pendidikan" class="form-control" value="{{ $data->pendidikan ?? '' }}" placeholder="Contoh: S1 Teknik Informatika">
+    <select name="pendidikan" class="form-control @error('pendidikan') is-invalid @enderror">
+        <option value="">-- Pilih Pendidikan --</option>
+        <option value="SMA" {{ (isset($data) && $data->pendidikan=='SMA')?'selected':'' }}>SMA</option>
+        <option value="D3" {{ (isset($data) && $data->pendidikan=='D3')?'selected':'' }}>D3</option>
+        <option value="S1" {{ (isset($data) && $data->pendidikan=='S1')?'selected':'' }}>S1</option>
+        <option value="S2" {{ (isset($data) && $data->pendidikan=='S2')?'selected':'' }}>S2</option>
+        <option value="S3" {{ (isset($data) && $data->pendidikan=='S3')?'selected':'' }}>S3</option>
+    </select>
+    @error('pendidikan')
+        <div class="invalid-feedback d-block">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
+    <label>Jurusan / Program Studi</label>
+    <input type="text" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{ $data->jurusan ?? '' }}" placeholder="Contoh: Teknik Informatika, Manajemen Bisnis">
+    @error('jurusan')
+        <div class="invalid-feedback d-block">{{ $message }}</div>
+    @enderror
 </div>
 
 <div class="mb-3">

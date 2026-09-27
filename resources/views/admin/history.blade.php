@@ -27,7 +27,7 @@
                     </select>
                 </div>
             </div>
-            
+
             <div class="row mt-3">
                 <div class="col-md-12 d-flex gap-2 flex-wrap">
                     <div class="me-2">
@@ -181,6 +181,7 @@
                                                     'tanggal_lahir' => 'Tanggal Lahir',
                                                     'tempat_lahir' => 'Tempat Lahir',
                                                     'pendidikan' => 'Pendidikan',
+                                                    'jurusan' => 'Jurusan / Program Studi',
                                                     'divisi_id' => 'Divisi',
                                                     'posisi' => 'Posisi',
                                                     'gaji' => 'Gaji',
@@ -305,7 +306,7 @@
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         border-radius: 10px;
     }
-    
+
     /* Table Card */
     .table-card {
         border: none;
@@ -313,12 +314,12 @@
         border-radius: 10px;
         overflow: hidden;
     }
-    
+
     /* Table Styles */
     .table {
         margin-bottom: 0;
     }
-    
+
     .table thead th {
         background-color: #2c3e50;
         color: white;
@@ -326,28 +327,28 @@
         padding: 12px 15px;
         font-weight: 600;
     }
-    
+
     .table tbody tr {
         transition: all 0.3s ease;
     }
-    
+
     .table-row:hover {
         background-color: rgba(0, 123, 255, 0.05);
     }
-    
+
     .table tbody td {
         padding: 12px 15px;
         vertical-align: middle;
         border-color: #f1f1f1;
     }
-    
+
     /* Badge Styles */
     .badge {
         font-size: 0.8em;
         padding: 6px 10px;
         font-weight: 600;
     }
-    
+
     /* Detail Row Styles */
     .detail-row {
         transition: all 0.3s ease;
@@ -398,28 +399,28 @@
     .toggle-detail.active i {
         transform: rotate(180deg);
     }
-    
+
     /* Animations */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .table-row {
         animation: fadeIn 0.5s ease-out;
     }
-    
+
     /* Pagination Styles */
     .pagination {
         margin-bottom: 0;
     }
-    
+
     .page-link {
         border-radius: 5px;
         margin: 0 3px;
         border: 1px solid #dee2e6;
     }
-    
+
     .page-item.active .page-link {
         background-color: #2c3e50;
         border-color: #2c3e50;
@@ -461,7 +462,7 @@
         opacity: 0;
         animation: tableRowAnimate 0.5s ease-out forwards !important;
     }
-    
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
         .table-responsive {
@@ -489,7 +490,7 @@
                 if (target) {
                     target.classList.toggle('d-none');
                     this.classList.toggle('active');
-                    
+
                     // Update icon rotation
                     const icon = this.querySelector('i');
                     if (icon) {

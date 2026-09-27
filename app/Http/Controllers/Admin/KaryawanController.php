@@ -33,6 +33,7 @@ class KaryawanController extends Controller
             'tanggal_lahir' => 'nullable|date',
             'tempat_lahir' => 'nullable|string|max:255',
             'pendidikan' => 'nullable|string|max:255',
+            'jurusan' => 'nullable|string|max:255',
             'divisi_id' => 'required|exists:divisis,id',
             'posisi' => 'required|string|max:255',
             'gaji' => 'nullable|numeric|min:0',
@@ -85,12 +86,12 @@ class KaryawanController extends Controller
     public function destroy($id)
     {
         $k = Karyawan::findOrFail($id);
-        
+
         // Delete old photo if exists
         if ($k->foto && Storage::disk('public')->exists('karyawan/' . $k->foto)) {
             Storage::disk('public')->delete('karyawan/' . $k->foto);
         }
-        
+
         // Log to history - delete action before deleting
         KaryawanHistory::create([
             'karyawan_id' => $k->id,
@@ -123,7 +124,7 @@ class KaryawanController extends Controller
     public function update(Request $request, $id)
     {
         $k = Karyawan::findOrFail($id);
-        
+
         // Store old data before update
         $oldData = $k->toArray();
 
@@ -134,8 +135,10 @@ class KaryawanController extends Controller
             'no_telepon' => 'nullable|string|max:20',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'tanggal_lahir' => 'nullable|date',
+            'tanggal_lahir' => 'nullable|date',
             'tempat_lahir' => 'nullable|string|max:255',
             'pendidikan' => 'nullable|string|max:255',
+            'jurusan' => 'nullable|string|max:255',
             'divisi_id' => 'required|exists:divisis,id',
             'posisi' => 'required|string|max:255',
             'gaji' => 'nullable|numeric|min:0',

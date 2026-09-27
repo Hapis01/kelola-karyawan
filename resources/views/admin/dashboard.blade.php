@@ -36,12 +36,12 @@
     </div>
 </div>
 
-<!-- Tombol Tambah -->
+<!-- Management Features Cards -->
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-3">
     <button class="btn btn-primary btn-add fade-in-up" style="animation-delay: 0.4s;" data-bs-toggle="modal" data-bs-target="#addKaryawanModal">
         <i class="fas fa-plus me-2"></i>Tambah Karyawan
     </button>
-    
+
     <div class="text-muted small">
         Menampilkan {{ $karyawans->count() }} dari {{ $karyawans->total() }} hasil
     </div>
@@ -207,12 +207,13 @@
                     <tr class="table-row-animate" style="animation-delay: {{ (0.7 + ($loop->index * 0.05)) }}s;">
                         <td class="d-none d-xl-table-cell">
                             @if($k->foto)
-                                <img src="{{ asset('storage/karyawan/' . $k->foto) }}" alt="{{ $k->nama }}" 
-                                     class="rounded-circle" width="40" height="40" style="object-fit: cover;">
+                                <img src="{{ asset('storage/karyawan/' . $k->foto) }}" alt="{{ $k->nama }}"
+                                     class="rounded-circle" width="40" height="40" style="object-fit: cover;"
+                                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($k->nama) }}&background=007bff&color=ffffff&size=100';">
                             @else
-                                <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                <div class="rounded-circle d-flex align-items-center justify-content-center"
                                      style="width: 40px; height: 40px; background-color: #007bff; color: white; font-weight: bold; font-size: 0.85rem;">
-                                    {{ substr($k->nama, 0, 1) }}
+                                     {{ substr($k->nama, 0, 1) }}
                                 </div>
                             @endif
                         </td>
@@ -246,8 +247,8 @@
                         <td>
                             <div class="d-flex gap-1">
                                 <!-- Edit via Modal -->
-                                <button type="button" class="btn btn-sm btn-primary btn-edit-karyawan" 
-                                        data-id="{{ $k->id }}" data-bs-toggle="modal" 
+                                <button type="button" class="btn btn-sm btn-primary btn-edit-karyawan"
+                                        data-id="{{ $k->id }}" data-bs-toggle="modal"
                                         data-bs-target="#editKaryawanModal"
                                         title="Edit">
                                     <i class="fas fa-edit"></i>
@@ -257,7 +258,7 @@
                                 <form action="{{ route('admin.karyawan.delete', $k->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-sm btn-danger btn-delete-karyawan" 
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete-karyawan"
                                             data-id="{{ $k->id }}"
                                             title="Hapus">
                                         <i class="fas fa-trash-alt"></i>
@@ -344,7 +345,7 @@
         transition: all 0.3s ease;
         border: 1px solid rgba(0, 0, 0, 0.05);
     }
-    
+
     .card-hover:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -386,7 +387,7 @@
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         border-radius: 10px;
     }
-    
+
     /* Table Card */
     .table-card {
         border: none;
@@ -394,12 +395,12 @@
         border-radius: 10px;
         overflow: hidden;
     }
-    
+
     /* Table Styles */
     .table {
         margin-bottom: 0;
     }
-    
+
     .table thead th {
         background-color: #2c3e50;
         color: white;
@@ -408,21 +409,21 @@
         font-weight: 600;
         font-size: 0.9rem;
     }
-    
+
     .table tbody tr {
         transition: all 0.3s ease;
     }
-    
+
     .table-row:hover {
         background-color: rgba(0, 123, 255, 0.05);
     }
-    
+
     .table tbody td {
         padding: 12px 15px;
         vertical-align: middle;
         border-color: #f1f1f1;
     }
-    
+
     /* Button Styles */
     .btn-add {
         border-radius: 8px;
@@ -431,34 +432,34 @@
         transition: all 0.3s ease;
         box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
     }
-    
+
     .btn-add:hover {
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
     }
-    
+
     /* Badge Styles */
     .badge {
         font-size: 0.75em;
         padding: 5px 8px;
     }
-    
+
     /* Pagination Styles */
     .pagination {
         margin-bottom: 0;
     }
-    
+
     .page-link {
         border-radius: 5px;
         margin: 0 3px;
         border: 1px solid #dee2e6;
     }
-    
+
     .page-item.active .page-link {
         background-color: #2c3e50;
         border-color: #2c3e50;
     }
-    
+
     /* Responsive adjustments */
     @media (max-width: 1024px) {
         .dashboard-card {
@@ -588,6 +589,7 @@
             display: table-cell !important;
         }
     }
+
 </style>
 @endpush
 
@@ -634,6 +636,7 @@
                         set('tanggal_lahir', data.tanggal_lahir);
                         set('tempat_lahir', data.tempat_lahir);
                         set('pendidikan', data.pendidikan);
+                        set('jurusan', data.jurusan);
                     })
                     .catch(console.error);
             });

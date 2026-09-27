@@ -57,7 +57,7 @@
         /* ======================== HERO SECTION ======================== */
         .hero-section {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
                         url('{{ asset("assets/images/bg1.png") }}') center/cover no-repeat fixed;
             display: flex;
             align-items: center;
@@ -688,8 +688,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('assets/images/logo12.png') }}" alt="Logo" style="height: 60px;">
-            </a>
+<img src="{{ asset('assets/images/logo12.png') }}"
+     alt="Logo"
+     style="height: 70px; margin-left: 30px;">            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -742,7 +743,7 @@
                 <div class="col-lg-6 fade-in" style="animation-delay: 0.2s;">
                     <div class="about-text">
                         <h3 style="color: #0d0b61; font-weight: 700; margin-bottom: 20px;">Profil Perusahaan</h3>
-                        
+
                         <p style="text-align: justify; line-height: 1.8; color: #555; margin-bottom: 20px;">
                             <strong>PT. Pasifik Energi Trans</strong> adalah perusahaan swasta nasional yang bergerak khusus di bidang usaha keagenan bahan bakar minyak industri yang mencakup seluruh wilayah Indonesia. Kami telah berdiri sejak 18 September 2012 dengan memiliki izin usaha penyaluran bahan bakar minyak.
                         </p>
@@ -815,7 +816,7 @@
             <!-- Company Images -->
             <div class="company-images fade-in" style="animation-delay: 0.6s;">
                 <h3 style="text-align: center; color: #0d0b61; font-weight: 700; margin-bottom: 40px;">Fasilitas & Operasional Kami</h3>
-                
+
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="company-image-card">
@@ -898,7 +899,7 @@
                 <!-- Lokasi -->
                 <div class="col-lg-6 col-md-12 footer-section fade-in">
                     <h5><i class="fas fa-map-marker-alt me-2"></i>Lokasi</h5>
-                    
+
                     <div class="contact-item mb-3">
                         <h6 style="color: #ffc107; font-weight: 700; margin-bottom: 8px;">
                             <i class="fas fa-map-pin me-2"></i>HEAD OFFICE
@@ -935,7 +936,7 @@
                 <!-- Hubungi Kami -->
                 <div class="col-lg-6 col-md-12 footer-section fade-in">
                     <h5><i class="fas fa-envelope me-2"></i>Hubungi Kami</h5>
-                    
+
                     <div class="contact-method mb-4">
                         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
                             <div style="width: 40px; height: 40px; background: rgba(255, 193, 7, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffc107;">

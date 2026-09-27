@@ -12,14 +12,14 @@
         <div class="table-container">
             <div style="text-align: center;">
                 @if($karyawan->foto)
-                    <img src="{{ asset('storage/karyawan/' . $karyawan->foto) }}" alt="{{ $karyawan->nama }}" 
+                    <img src="{{ asset('storage/karyawan/' . $karyawan->foto) }}" alt="{{ $karyawan->nama }}"
                          style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                 @else
                     <div style="width: 100%; max-width: 300px; height: 300px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 80px; font-weight: bold; margin: 0 auto 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                         {{ substr($karyawan->nama, 0, 1) }}
                     </div>
                 @endif
-                
+
                 <h4 class="fw-bold mb-2">{{ $karyawan->nama }}</h4>
                 <p class="text-muted">{{ $karyawan->nik }}</p>
                 <p class="text-muted mb-4">{{ $karyawan->posisi }}</p>
@@ -36,7 +36,7 @@
         <!-- Informasi Pekerjaan -->
         <div class="table-container">
             <h5 class="fw-bold mb-3"><i class="fas fa-briefcase text-primary me-2"></i>Informasi Pekerjaan</h5>
-            
+
             <div class="table-responsive">
                 <table class="table table-sm table-borderless">
                     <tbody>
@@ -84,14 +84,24 @@
         <!-- Informasi Pribadi -->
         <div class="table-container">
             <h5 class="fw-bold mb-3"><i class="fas fa-user text-info me-2"></i>Informasi Pribadi</h5>
-            
+
             <div class="table-responsive">
                 <table class="table table-sm table-borderless">
                     <tbody>
                         <tr>
-                            <td class="fw-bold" style="width: 30%;">Jenis Kelamin</td>
+                            <td class="fw-bold">Jenis Kelamin</td>
                             <td class="d-none d-md-table-cell">:</td>
                             <td>{{ $karyawan->jenis_kelamin }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Pendidikan Terakhir</td>
+                            <td class="d-none d-md-table-cell">:</td>
+                            <td>{{ $karyawan->pendidikan ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Jurusan / Program Studi</td>
+                            <td class="d-none d-md-table-cell">:</td>
+                            <td>{{ $karyawan->jurusan ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="fw-bold">Alamat</td>
